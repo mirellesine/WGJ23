@@ -17,7 +17,7 @@ class GameScene: SKScene {
         SKAction.rotate(byAngle: -.pi/12, duration: 0.5)
     ])
     
-    let wait = SKAction.wait(forDuration: 2)
+    let wait = SKAction.wait(forDuration: 1.5)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,14 +43,13 @@ class GameScene: SKScene {
             balloon = SKSpriteNode(texture: balloonTexture)
             balloon!.position = CGPoint(x: character.position.x, y: character.position.y + character.size.height / 2 + balloon!.size.height / 2)
             addChild(balloon!)
+            polaroid?.run(shake)
             
             // Mostrar a setinha pra próxima cena depois de 1 segundos:
-            let waitAction = SKAction.wait(forDuration: 1)
-            let showArrowAction = SKAction.run {
-                self.showArrow()
-            }
-            let sequence = SKAction.sequence([waitAction, showArrowAction])
-            run(sequence)
+            let waitAction = SKAction.wait(forDuration: 2.5)
+            
+            run(waitAction, completion: {let nextScene = Scene2(size: self.size)
+                self.view?.presentScene(nextScene)})
             
             balloonDisplayed = true
         }
@@ -70,20 +69,15 @@ class GameScene: SKScene {
         let resize = SKAction.resize(toWidth: newSize, height: newSize, duration: 1)
         let position = polaroidContainer.position
         let targetPosition = CGPoint(x: position.x - newSize / 4, y: position.y + newSize / 2)
-        let move = SKAction.move(to: targetPosition, duration: 2.0)
-        let sequence = SKAction.sequence([shake, move, resize])
+        let move = SKAction.move(to: targetPosition, duration: 0.5)
+        let sequence = SKAction.sequence([wait, move, resize])
         polaroid?.run(sequence)
+        polaroid.addBlur()
+        
     }
 
     // Registra o final do click:
     override func mouseUp(with event: NSEvent) {
-        let location = event.location(in: self)
-        
-        if let arrow = arrow, arrow.contains(location) {
-            let transition = SKTransition.fade(withDuration: 0.5)
-            let nextScene = Scene2(size: self.size)
-            self.view?.presentScene(nextScene, transition: transition)
-        }
     }
 
     
@@ -91,3 +85,30 @@ class GameScene: SKScene {
         // Atualiza a página a cada frame
     }
 }
+
+extension SKSpriteNode {
+    func addBlur() {
+        let blurEffectNode = SKEffectNode()
+        addChild(blurEffectNode)
+        let effect = SKSpriteNode(texture: texture)
+        let blurFilter = CIFilter(name: "CIGaussianBlur")
+        let blurRadius: CGFloat = 100.0
+        effect.size = self.size
+        blurFilter?.setValue(blurRadius, forKey: kCIInputRadiusKey)
+        blurEffectNode.filter = blurFilter
+        blurEffectNode.addChild(effect)
+        blurEffectNode.filter = CIFilter(name: "CIGaussianBlur")
+    }
+}
+//extension SKSpriteNode {
+//    func addGlow(radius: Float) {
+//        let effectNode = SKEffectNode()
+//        effectNode.shouldRasterize = true
+//        addChild(effectNode)
+//        let effect = SKSpriteNode(texture: texture)
+//        effect.color = .white
+//        effect.size = self.size
+//        effect.colorBlendFactor = 1
+//        effectNode.addChild(effect)
+//        effectNode.filter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius":radius])
+//    }
