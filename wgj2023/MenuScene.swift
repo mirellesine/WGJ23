@@ -1,12 +1,11 @@
 import SpriteKit
 
 class MenuScene: SKScene {
-    
     private var background: SKSpriteNode!
     private var nome: SKLabelNode!
     private var iniciar: SKLabelNode!
     private var credits: SKLabelNode!
-        
+    
     override func didMove(to view: SKView) {
         
     }
@@ -15,10 +14,10 @@ class MenuScene: SKScene {
         let location = event.location(in: self)
         
         if let label = childNode(withName: "iniciar") as? SKLabelNode, label.contains(location) {
-            if let gameScene = GameScene(fileNamed: "GameScene") {
+            if let gameScene = SKScene(fileNamed: "GameScene") {
                 gameScene.scaleMode = self.scaleMode
-            let transition = SKTransition.fade(withDuration: 0.5)
-            self.view?.presentScene(gameScene, transition: transition)
+                let transition = SKTransition.fade(withDuration: 0.5)
+                self.view?.presentScene(gameScene, transition: transition)
             }
         }
         
