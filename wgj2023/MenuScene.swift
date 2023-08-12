@@ -6,9 +6,7 @@ class MenuScene: SKScene {
     private var nome: SKLabelNode!
     private var iniciar: SKLabelNode!
     private var credits: SKLabelNode!
-    
-    private var balloon: SKSpriteNode!
-    
+        
     override func didMove(to view: SKView) {
         
     }
