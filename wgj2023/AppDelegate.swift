@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  wgj2023
-//
-//  Created by Thayna Rodrigues on 11/08/23.
-//
-
-
 import Cocoa
 
 @main
