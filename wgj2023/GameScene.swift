@@ -9,6 +9,7 @@ class GameScene: SKScene {
     private var polaroidContainer: SKNode!
     private var backgroundImage: SKSpriteNode!
     private var balloonDisplayed = false
+    private var isPolaroidClickable = false
     
     // Ação para fazer a polaroid tremer.
     let shake = SKAction.sequence([
@@ -16,8 +17,6 @@ class GameScene: SKScene {
         SKAction.rotate(byAngle: .pi/6, duration: 0.5),
         SKAction.rotate(byAngle: -.pi/12, duration: 0.5)
     ])
-    
-    let wait = SKAction.wait(forDuration: 1.5)
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,15 +42,30 @@ class GameScene: SKScene {
             balloon = SKSpriteNode(texture: balloonTexture)
             balloon!.position = CGPoint(x: character.position.x, y: character.position.y + character.size.height / 2 + balloon!.size.height / 2)
             addChild(balloon!)
-            polaroid?.run(shake)
+            
+            let removeBlur = SKAction.run {
+                self.polaroid.removeFromParent()
+                self.addChild(self.polaroid)
+            }
+            
+            let sequence = SKAction.sequence([removeBlur, shake])
+            polaroid.run(sequence)
             
             // Mostrar a setinha pra próxima cena depois de 1 segundos:
             let waitAction = SKAction.wait(forDuration: 2.5)
             
-            run(waitAction, completion: {let nextScene = Scene2(size: self.size)
-                self.view?.presentScene(nextScene)})
+            run(waitAction)//: {
+//                let nextScene = Scene2(size: self.size)
+//                self.view?.presentScene(nextScene)
+//
+//            })
             
             balloonDisplayed = true
+        }
+        
+        if polaroid.contains(location) && isPolaroidClickable {
+            itemDetail()
+            isPolaroidClickable = false
         }
     }
     
@@ -65,50 +79,52 @@ class GameScene: SKScene {
     }
     
     func itemDetail() {
-        let newSize: CGFloat = 400
-        let resize = SKAction.resize(toWidth: newSize, height: newSize, duration: 1)
-        let position = polaroidContainer.position
-        let targetPosition = CGPoint(x: position.x - newSize / 4, y: position.y + newSize / 2)
-        let move = SKAction.move(to: targetPosition, duration: 0.5)
-        let sequence = SKAction.sequence([wait, move, resize])
-        polaroid?.run(sequence)
-        polaroid.addBlur()
+        let wait = SKAction.wait(forDuration: 1.5)
         
+        let duration: TimeInterval = 1
+        //polaroid aumenta
+        let resizeBig = SKAction.scale(to: 0.4, duration: duration)
+        
+        
+        let center = CGPoint(x: 0, y: 0)
+        let moveToCenter = SKAction.move(to: center, duration: duration)
+        
+        let removeBlur = SKAction.run {
+            self.polaroid.removeFromParent()
+            self.addChild(self.polaroid)
+        }
+        
+        //polaroid vai pro centro
+        let centerAction = SKAction.group([resizeBig, moveToCenter, removeBlur])
+        
+        //polaroid diminui
+        let resizeSmall = SKAction.scale(to: 0.2, duration: duration)
+        //posiçao do nó transparente
+        let targetPosition = CGPoint(x: polaroidContainer.position.x, y: polaroidContainer.position.y)
+        
+        let moveToCorner = SKAction.move(to: targetPosition, duration: duration)
+        //polaroid vai pra borda
+        let cornerAction = SKAction.group([resizeSmall, moveToCorner])
+        
+        //sequencia de actions
+        let sequence = SKAction.sequence([centerAction, wait, cornerAction])
+        
+        polaroid?.run(sequence, completion: {
+            let effectNode = SKEffectNode()
+                        let filter = CIFilter(name: "CIGaussianBlur")
+                        let radius = 5.0
+                        filter?.setValue(radius, forKey: kCIInputRadiusKey)
+                        effectNode.filter = filter
+                        self.polaroid.removeFromParent()
+                        effectNode.addChild(self.polaroid)
+                        self.addChild(effectNode)
+            //thread
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10) { [weak self] in
+                self?.isPolaroidClickable = true
+            }
+        })
     }
-
-    // Registra o final do click:
-    override func mouseUp(with event: NSEvent) {
-    }
-
-    
     override func update(_ currentTime: TimeInterval) {
         // Atualiza a página a cada frame
     }
 }
-
-extension SKSpriteNode {
-    func addBlur() {
-        let blurEffectNode = SKEffectNode()
-        addChild(blurEffectNode)
-        let effect = SKSpriteNode(texture: texture)
-        let blurFilter = CIFilter(name: "CIGaussianBlur")
-        let blurRadius: CGFloat = 100.0
-        effect.size = self.size
-        blurFilter?.setValue(blurRadius, forKey: kCIInputRadiusKey)
-        blurEffectNode.filter = blurFilter
-        blurEffectNode.addChild(effect)
-        blurEffectNode.filter = CIFilter(name: "CIGaussianBlur")
-    }
-}
-//extension SKSpriteNode {
-//    func addGlow(radius: Float) {
-//        let effectNode = SKEffectNode()
-//        effectNode.shouldRasterize = true
-//        addChild(effectNode)
-//        let effect = SKSpriteNode(texture: texture)
-//        effect.color = .white
-//        effect.size = self.size
-//        effect.colorBlendFactor = 1
-//        effectNode.addChild(effect)
-//        effectNode.filter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius":radius])
-//    }
