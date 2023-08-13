@@ -28,6 +28,9 @@
 		2F6B0C992A871D73009BC1A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B0C972A871D73009BC1A9 /* Main.storyboard */; };
 		C5654D432A885FFA000CD527 /* Scene3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5654D422A885FFA000CD527 /* Scene3.swift */; };
 		C5654D472A886037000CD527 /* Scene3.sks in Resources */ = {isa = PBXBuildFile; fileRef = C5654D462A886037000CD527 /* Scene3.sks */; };
+		C5654D4B2A89713A000CD527 /* Bellota-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5654D4A2A89713A000CD527 /* Bellota-Bold.ttf */; };
+		C5654D4F2A8974A9000CD527 /* Fredoka-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5654D4D2A8974A9000CD527 /* Fredoka-Regular.ttf */; };
+		C5654D502A8974A9000CD527 /* Fredoka-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5654D4E2A8974A9000CD527 /* Fredoka-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,10 @@
 		2F6B0C9A2A871D73009BC1A9 /* wgj2023.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wgj2023.entitlements; sourceTree = "<group>"; };
 		C5654D422A885FFA000CD527 /* Scene3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene3.swift; sourceTree = "<group>"; };
 		C5654D462A886037000CD527 /* Scene3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene3.sks; sourceTree = "<group>"; };
+		C5654D4A2A89713A000CD527 /* Bellota-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bellota-Bold.ttf"; sourceTree = "<group>"; };
+		C5654D4C2A897263000CD527 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C5654D4D2A8974A9000CD527 /* Fredoka-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Regular.ttf"; sourceTree = "<group>"; };
+		C5654D4E2A8974A9000CD527 /* Fredoka-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Fredoka-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,7 @@
 		2F6B0C8A2A871D73009BC1A9 /* wgj2023 */ = {
 			isa = PBXGroup;
 			children = (
+				C5654D4C2A897263000CD527 /* Info.plist */,
 				2F6B0C8B2A871D73009BC1A9 /* AppDelegate.swift */,
 				2F069AE72A88005400FA6C55 /* InfoScene.sks */,
 				2F069AE52A88004200FA6C55 /* InfoScene.swift */,
@@ -101,6 +109,15 @@
 				2F6B0C952A871D73009BC1A9 /* Assets.xcassets */,
 				2F6B0C972A871D73009BC1A9 /* Main.storyboard */,
 				2F6B0C9A2A871D73009BC1A9 /* wgj2023.entitlements */,
+				C5654D482A897098000CD527 /* Sounds */,
+				C5654D492A8970B9000CD527 /* Fonts */,
+			);
+			path = wgj2023;
+			sourceTree = "<group>";
+		};
+		C5654D482A897098000CD527 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
 				2F06F6C92A887F950072CF82 /* game-music.mp3 */,
 				2F06F6CE2A8891990072CF82 /* birds-chirping.mp3 */,
 				2F06F6CB2A8891990072CF82 /* pigeon.mp3 */,
@@ -109,7 +126,17 @@
 				2F06F6D72A889DB00072CF82 /* paper.mp3 */,
 				2F06F6D92A889E380072CF82 /* dog.mp3 */,
 			);
-			path = wgj2023;
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		C5654D492A8970B9000CD527 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C5654D4E2A8974A9000CD527 /* Fredoka-Medium.ttf */,
+				C5654D4D2A8974A9000CD527 /* Fredoka-Regular.ttf */,
+				C5654D4A2A89713A000CD527 /* Bellota-Bold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +199,7 @@
 			files = (
 				2F6B0C8E2A871D73009BC1A9 /* GameScene.sks in Resources */,
 				2F443D682A881EDF00D52FE4 /* MenuScene.sks in Resources */,
+				C5654D4B2A89713A000CD527 /* Bellota-Bold.ttf in Resources */,
 				2F3B4C2E2A87327900858B73 /* Scene2.sks in Resources */,
 				2F06F6CA2A887F960072CF82 /* game-music.mp3 in Resources */,
 				2F069AE82A88005500FA6C55 /* InfoScene.sks in Resources */,
@@ -179,6 +207,8 @@
 				2F6B0C962A871D73009BC1A9 /* Assets.xcassets in Resources */,
 				2F06F6D62A8891990072CF82 /* cat.mp3 in Resources */,
 				C5654D472A886037000CD527 /* Scene3.sks in Resources */,
+				C5654D4F2A8974A9000CD527 /* Fredoka-Regular.ttf in Resources */,
+				C5654D502A8974A9000CD527 /* Fredoka-Medium.ttf in Resources */,
 				2F06F6D42A8891990072CF82 /* birds-chirping.mp3 in Resources */,
 				2F6B0C992A871D73009BC1A9 /* Main.storyboard in Resources */,
 				2F06F6D12A8891990072CF82 /* pigeon.mp3 in Resources */,
@@ -341,9 +371,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NK77GDR8W7;
+				DEVELOPMENT_TEAM = W7CBBM6Z28;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wgj2023/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -370,9 +401,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NK77GDR8W7;
+				DEVELOPMENT_TEAM = W7CBBM6Z28;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wgj2023/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
