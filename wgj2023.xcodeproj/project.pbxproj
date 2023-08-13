@@ -20,6 +20,7 @@
 		2F3B4C302A87328200858B73 /* Scene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F3B4C2F2A87328200858B73 /* Scene2.swift */; };
 		2F443D662A881ECC00D52FE4 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F443D652A881ECC00D52FE4 /* MenuScene.swift */; };
 		2F443D682A881EDF00D52FE4 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2F443D672A881EDF00D52FE4 /* MenuScene.sks */; };
+		2F6A350B2A897A1000546154 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2F6A350A2A897A1000546154 /* click.mp3 */; };
 		2F6B0C8C2A871D73009BC1A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C8B2A871D73009BC1A9 /* AppDelegate.swift */; };
 		2F6B0C8E2A871D73009BC1A9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2F6B0C8D2A871D73009BC1A9 /* GameScene.sks */; };
 		2F6B0C922A871D73009BC1A9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6B0C912A871D73009BC1A9 /* GameScene.swift */; };
@@ -44,6 +45,7 @@
 		2F3B4C2F2A87328200858B73 /* Scene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene2.swift; sourceTree = "<group>"; };
 		2F443D652A881ECC00D52FE4 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		2F443D672A881EDF00D52FE4 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		2F6A350A2A897A1000546154 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		2F6B0C882A871D73009BC1A9 /* wgj2023.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wgj2023.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F6B0C8B2A871D73009BC1A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F6B0C8D2A871D73009BC1A9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				2F06F6CD2A8891990072CF82 /* chucke.mp3 */,
 				2F06F6D72A889DB00072CF82 /* paper.mp3 */,
 				2F06F6D92A889E380072CF82 /* dog.mp3 */,
+				2F6A350A2A897A1000546154 /* click.mp3 */,
 			);
 			path = wgj2023;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				2F06F6CA2A887F960072CF82 /* game-music.mp3 in Resources */,
 				2F069AE82A88005500FA6C55 /* InfoScene.sks in Resources */,
 				2F06F6DA2A889E380072CF82 /* dog.mp3 in Resources */,
+				2F6A350B2A897A1000546154 /* click.mp3 in Resources */,
 				2F6B0C962A871D73009BC1A9 /* Assets.xcassets in Resources */,
 				2F06F6D62A8891990072CF82 /* cat.mp3 in Resources */,
 				C5654D472A886037000CD527 /* Scene3.sks in Resources */,

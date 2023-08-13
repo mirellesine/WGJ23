@@ -11,12 +11,13 @@ class Scene3: SKScene {
     private var isPolaroidClickable = false
     
     // -------- Substituir esses nodes depois:
-    private var node1: SKSpriteNode!
-    private var node2: SKSpriteNode!
-    private var node3: SKSpriteNode!
-    private var node4: SKSpriteNode!
-    private var node5: SKSpriteNode!
-
+    private var colombiana: SKSpriteNode!
+    private var pombo: SKSpriteNode!
+    private var gato: SKSpriteNode!
+    private var cachorro: SKSpriteNode!
+    private var mulherJornal: SKSpriteNode!
+    private var flor: SKSpriteNode!
+    private var mulherFoto: SKSpriteNode!
 
     // Ação para fazer a polaroid tremer.
     let shake = SKAction.sequence([
@@ -28,16 +29,17 @@ class Scene3: SKScene {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        character = childNode(withName: "character") as? SKSpriteNode
         polaroid = childNode(withName: "polaroid") as? SKSpriteNode
         polaroidContainer = childNode(withName: "polaroidContainer")
         
         // -------- Substituir esses nodes depois
-        node1 = childNode(withName: "node1") as? SKSpriteNode
-        node2 = childNode(withName: "node2") as? SKSpriteNode
-        node3 = childNode(withName: "node3") as? SKSpriteNode
-        node4 = childNode(withName: "node4") as? SKSpriteNode
-        node5 = childNode(withName: "node5") as? SKSpriteNode
+        colombiana = childNode(withName: "colombiana") as? SKSpriteNode
+        pombo = childNode(withName: "pombo") as? SKSpriteNode
+        gato = childNode(withName: "gato") as? SKSpriteNode
+        cachorro = childNode(withName: "cachorro") as? SKSpriteNode
+        mulherJornal = childNode(withName: "mulherJornal") as? SKSpriteNode
+        flor = childNode(withName: "flor") as? SKSpriteNode
+        mulherFoto = childNode(withName: "mulherFoto") as? SKSpriteNode
     }
     
     
@@ -52,14 +54,14 @@ class Scene3: SKScene {
         let location = event.location(in: self)
         
         // Se o personagem certo tá na localização do click:
-        if character.contains(location) && !balloonDisplayed {
+        if mulherJornal.contains(location) && !balloonDisplayed {
             
-            let soundAction = SKAction.playSoundFileNamed("pigeon.mp3", waitForCompletion: false)
+            let soundAction = SKAction.playSoundFileNamed("paper.mp3", waitForCompletion: false)
 
             // Mostra o balão de confirmação
             let balloonTexture = SKTexture(imageNamed: "balloon")
             balloon = SKSpriteNode(texture: balloonTexture)
-            balloon!.position = CGPoint(x: character.position.x, y: character.position.y + character.size.height / 2 + balloon!.size.height / 2)
+            balloon!.position = CGPoint(x: mulherJornal.position.x, y: mulherJornal.position.y + mulherJornal.size.height / 2 + balloon!.size.height / 2)
             addChild(balloon!)
             
             // Remove o blur da polaroid
@@ -95,7 +97,7 @@ class Scene3: SKScene {
         
         let duration: TimeInterval = 1
         //polaroid aumenta
-        let resizeBig = SKAction.scale(to: 0.4, duration: duration)
+        let resizeBig = SKAction.scale(to: 1.5, duration: duration)
         
         let center = CGPoint(x: 0, y: 0)
         let moveToCenter = SKAction.move(to: center, duration: duration)
@@ -109,7 +111,7 @@ class Scene3: SKScene {
         let centerAction = SKAction.group([resizeBig, moveToCenter, removeBlur])
         
         //polaroid diminui
-        let resizeSmall = SKAction.scale(to: 0.2, duration: duration)
+        let resizeSmall = SKAction.scale(to: 0.5, duration: duration)
         //posiçao do nó transparente
         let targetPosition = CGPoint(x: polaroidContainer.position.x, y: polaroidContainer.position.y)
         
@@ -139,19 +141,19 @@ class Scene3: SKScene {
     // Checa os cliques dos objetos clicáveis no cenário e adiciona áudio
     override func mouseUp(with event: NSEvent) {
         let location = event.location(in: self)
-        if node1.contains(location) && !balloonDisplayed {
+        if colombiana.contains(location) && !balloonDisplayed {
             let soundAction = SKAction.playSoundFileNamed("chucke.mp3", waitForCompletion: false)
             self.run(soundAction)
-        } else if node2.contains(location) && !balloonDisplayed {
+        } else if pombo.contains(location) && !balloonDisplayed {
             let soundAction = SKAction.playSoundFileNamed("pigeon.mp3", waitForCompletion: false)
             self.run(soundAction)
-        } else if node3.contains(location) && !balloonDisplayed {
+        } else if gato.contains(location) && !balloonDisplayed {
             let soundAction = SKAction.playSoundFileNamed("cat.mp3", waitForCompletion: false)
             self.run(soundAction)
-        } else if node4.contains(location) && !balloonDisplayed {
-            let soundAction = SKAction.playSoundFileNamed("dog.mp3", waitForCompletion: false)
+        } else if mulherFoto.contains(location) && !balloonDisplayed {
+            let soundAction = SKAction.playSoundFileNamed("click.mp3", waitForCompletion: false)
             self.run(soundAction)
-        } else if node5.contains(location) && !balloonDisplayed {
+        } else if mulherJornal.contains(location) && !balloonDisplayed {
             let soundAction = SKAction.playSoundFileNamed("paper.mp3", waitForCompletion: false)
             self.run(soundAction)
         }
