@@ -132,6 +132,7 @@ class GameScene: SKScene {
                         self.polaroid.removeFromParent()
                         effectNode.addChild(self.polaroid)
                         self.addChild(effectNode)
+                        effectNode.zPosition = 3
             //thread
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10) { [weak self] in
                 self?.isPolaroidClickable = true
