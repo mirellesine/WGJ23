@@ -62,6 +62,7 @@ class GameScene: SKScene {
             let balloonTexture = SKTexture(imageNamed: "balloon")
             balloon = SKSpriteNode(texture: balloonTexture)
             balloon!.position = CGPoint(x: cachorro.position.x, y: cachorro.position.y + cachorro.size.height / 2 + balloon!.size.height / 2)
+            balloon?.zPosition = 2
             addChild(balloon!)
             
             // Remove o blur da polaroid
