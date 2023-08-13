@@ -12,6 +12,8 @@ class InfoScene: SKScene {
     private var yasmin: SKLabelNode!
     private var mirelle: SKLabelNode!
     private var thayna: SKLabelNode!
+    private var soundTrackName: SKLabelNode!
+    private var soundTrackNameCopyright: SKLabelNode!
 
     private var amanda_role: SKLabelNode!
     private var nina_role: SKLabelNode!
@@ -20,6 +22,7 @@ class InfoScene: SKScene {
     private var yasmin_role: SKLabelNode!
     private var mirelle_role: SKLabelNode!
     private var thayna_role: SKLabelNode!
+    private var soundTrack: SKLabelNode!
     
 
     override func didMove(to view: SKView) {
