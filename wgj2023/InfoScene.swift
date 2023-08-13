@@ -32,7 +32,7 @@ class InfoScene: SKScene {
         
         if let label = childNode(withName: "retornar") as? SKLabelNode, label.contains(location) {
             if let menuScene = MenuScene(fileNamed: "MenuScene") {
-                menuScene.scaleMode = .aspectFill
+                menuScene.scaleMode = .aspectFit
                 let transition = SKTransition.fade(withDuration: 0.5)
                 self.view?.presentScene(menuScene, transition: transition)
             }

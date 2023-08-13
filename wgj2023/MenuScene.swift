@@ -3,6 +3,7 @@ import SpriteKit
 
 class MenuScene: SKScene {
     private var background: SKSpriteNode!
+    private var predio: SKSpriteNode!
     private var nome: SKLabelNode!
     private var iniciar: SKLabelNode!
     private var credits: SKLabelNode!

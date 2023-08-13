@@ -54,7 +54,7 @@ class Scene3: SKScene {
         // Se o personagem certo tá na localização do click:
         if character.contains(location) && !balloonDisplayed {
             
-            let soundAction = SKAction.playSoundFileNamed("chucke.mp3", waitForCompletion: false)
+            let soundAction = SKAction.playSoundFileNamed("pigeon.mp3", waitForCompletion: false)
 
             // Mostra o balão de confirmação
             let balloonTexture = SKTexture(imageNamed: "balloon")
@@ -72,7 +72,7 @@ class Scene3: SKScene {
             let waitBeforeTransition = SKAction.wait(forDuration: 2.5)
             let transitionAction = SKAction.run {
                 let newScene = SKScene(fileNamed: "InfoScene")
-                newScene?.scaleMode = .aspectFill
+                newScene?.scaleMode = .aspectFit
                 self.view?.presentScene(newScene)
             }
             
