@@ -7,6 +7,7 @@ class MenuScene: SKScene {
     private var nome: SKLabelNode!
     private var iniciar: SKLabelNode!
     private var credits: SKLabelNode!
+    private var subtitles: SKLabelNode!
     
     override func didMove(to view: SKView) {
         // Reproduz a música
