@@ -26,12 +26,13 @@ class InfoScene: SKScene {
 
     }
     
+    // Retorna para o menu
     override func mouseDown(with event: NSEvent) {
         let location = event.location(in: self)
         
         if let label = childNode(withName: "retornar") as? SKLabelNode, label.contains(location) {
             if let menuScene = MenuScene(fileNamed: "MenuScene") {
-                menuScene.scaleMode = self.scaleMode
+                menuScene.scaleMode = .aspectFill
                 let transition = SKTransition.fade(withDuration: 0.5)
                 self.view?.presentScene(menuScene, transition: transition)
             }
